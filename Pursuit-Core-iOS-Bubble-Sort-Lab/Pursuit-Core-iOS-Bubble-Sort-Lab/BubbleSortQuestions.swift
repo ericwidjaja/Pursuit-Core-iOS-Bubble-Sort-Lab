@@ -5,9 +5,19 @@ import Foundation
 // Implement bubble sort that accepts a closure about how to sort elements
 
 func bubbleSort<T: Comparable>(arr: [T], by isSorted: (T, T) -> Bool) -> [T] {
-    return arr
+    var array = arr
+    var didSwap = false
+    repeat {
+        didSwap = false
+        for i in 0..<arr.count - 1 {
+            if !isSorted(arr[i],arr[i+1]) && arr[i] != arr[i+1] {
+                array.swapAt(i, i+1)
+                didSwap = true
+            }
+        }
+    } while didSwap
+    return array
 }
-
 // Question Two
 
 // Sort an array of Ints without changing the position of any negative numbers
